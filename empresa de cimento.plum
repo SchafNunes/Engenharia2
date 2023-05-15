@@ -1,0 +1,31 @@
+@startuml
+
+left to right direction
+
+actor Cliente as C
+actor "Departamento de Vendas" as V
+actor "Encarregado de Produção" as EP
+actor "Encarregado de Almoxarifado e Estocagem" as EA
+actor "Operador das Máquinas" as OM
+actor "Operários de Mistura de Componentes" as OMC
+actor "Funcionário de Controle de Fluxo de Trabalho" as FCT
+actor "Setor de Recebimento e Distribuição" as SRD
+actor "Transportadora da Empresa" as TE
+actor "Departamento Financeiro" as DF
+
+rectangle "Fábrica de Concreto" {
+    C --> (Realizar Pedido)
+    V --> (Agendar Pedido)
+    V --> (Encaminhar Pedido)
+    EA --> (Receber Materiais)
+    OM --> (Controlar Fabricação) 
+    EP --> (Emitir Pedido de Compra)
+    DF --> (Receber Pagamento)
+    SRD --> (Verificar Recebimento de Materiais)
+    TE --> (Entregar Produto)
+}
+
+(Controlar Fabricação) --> FCT : <<include>>
+(Controlar Fabricação) --> OMC : <<include>>
+
+@enduml
